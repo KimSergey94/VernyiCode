@@ -1,4 +1,4 @@
-namespace VernyiCode.WebTests
+namespace VernyiCode.StreamTaskTests
 {
     public class UnitTest1
     {
