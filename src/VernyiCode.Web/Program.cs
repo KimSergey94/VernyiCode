@@ -22,4 +22,12 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "Default",
+        pattern: "{controller=UserPost}/{action=Index}"
+    );
+});
+
 app.Run();
