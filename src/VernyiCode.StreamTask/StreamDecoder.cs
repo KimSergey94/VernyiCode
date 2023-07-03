@@ -10,19 +10,17 @@ namespace VernyiCode.StreamTask
     public class StreamDecoder : IStreamDecoder
     {
         private char _messageEndingSymbol = ';';
-        private int _bufferSize = 256;
         private Stream _stream = null;
+        private int _bufferSize;
+        byte[] _buffer;
 
-        public StreamDecoder (Stream stream)
+        public StreamDecoder (Stream stream, int bufferSize = 256, char messageEndingSymbol = ';')
         {
             _stream = stream;
-        }
-
-        private byte[] ReadBytes()
-        {
-            byte[] buffer = new byte[_bufferSize];
-            int bytesRead = _stream.Read(buffer, 0, _bufferSize);
-            return buffer;
+            _bufferSize = bufferSize;
+            _messageEndingSymbol = messageEndingSymbol;
+            _buffer = new byte[_bufferSize];
+            _stream.Read(_buffer, 0, _bufferSize);
         }
 
         public StreamDecoder SetBufferSize(int bufferSize)
@@ -39,10 +37,9 @@ namespace VernyiCode.StreamTask
 
         public string GetMessageByByteArray()
         {
-            var bytes = ReadBytes();
-            var nullIndex = Array.IndexOf(bytes, (byte)0);
-            nullIndex = nullIndex != -1 && bytes[nullIndex - 1] == _messageEndingSymbol ? nullIndex - 1 : bytes.Length;
-            return Encoding.UTF8.GetString(bytes, 0, nullIndex);
+            var nullIndex = Array.IndexOf(_buffer, (byte)0);
+            nullIndex = nullIndex != -1 && _buffer[nullIndex - 1] == _messageEndingSymbol ? nullIndex - 1 : _buffer.Length;
+            return Encoding.UTF8.GetString(_buffer, 0, nullIndex);
         }
 
         public byte[] GetBytes()
