@@ -1,6 +1,6 @@
 namespace VernyiCode.StreamTaskTests
 {
-    public class UnitTest1
+    public class StreamDecoderTest
     {
         [Fact]
         public void Test1()

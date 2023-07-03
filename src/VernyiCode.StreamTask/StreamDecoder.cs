@@ -8,5 +8,6 @@ namespace VernyiCode.StreamTask
 {
     public class StreamDecoder
     {
+
     }
 }
