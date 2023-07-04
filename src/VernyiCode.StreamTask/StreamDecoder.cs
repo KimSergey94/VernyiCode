@@ -10,7 +10,7 @@ namespace VernyiCode.StreamTask
     public class StreamDecoder : IStreamDecoder
     {
         private char _messageEndingSymbol = ';';
-        private Stream _stream = null;
+        private Stream _stream;
         private int _bufferSize;
         byte[] _buffer;
 

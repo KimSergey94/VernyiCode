@@ -9,9 +9,11 @@ namespace VernyiCode.Web.Controllers
 {
     public class UserPostController : Controller
     {
-        //● Получить N(максимум) последних сообщений для разных пользователей.Т.е.взять
-        //максимум N пользователей, которые оставляли сообщения, и выбрать их последние
-        //сообщения в порядке даты публикации
+        // GET: UserPost/
+        public ActionResult Index()
+        {
+            return View();
+        }
 
         // GET: UserPost/TakeNLatestPostsByUserId
         public ActionResult TakeNLatestPostsByUserId(int userId, int n = 10)

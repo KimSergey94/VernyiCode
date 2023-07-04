@@ -1,1 +1,5 @@
-﻿<span>test2</span>
+﻿@using VernyiCode.Web.Extensions;
+@model List<VernyiCode.Web.Entities.Post>
+@{
+    @Model.ToJSON()
+}
